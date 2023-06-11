@@ -6,7 +6,7 @@ Redmine::Plugin.register :downloader do
   url 'https://github.com/clouetb/downloader'
   author_url 'https://github.com/clouetb'
   # caption = I18n.t 'label_download_menu'
-  permission :downloads, { downloads: [:index, :download] }, public: true
+  permission :downloads, { downloads: [:index, :download] }, public: false
   menu :project_menu, :downloads, {controller: 'downloads', action: 'index'}, caption: 'Download', after: :issues, param: :project_id
   settings :default => { 'attachments_limit' => 10 }, :partial => 'settings/attachments_limit'
 end

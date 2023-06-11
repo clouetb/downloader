@@ -42,10 +42,6 @@ class DownloadsController < ApplicationController
           zip.write_stored_file(filename_inside_zip) do |sink|
             File.open(filename_on_server, 'rb'){|source| IO.copy_stream(source, sink) }
           end
-          # attachment.filename
-          # attachment.disk_filename
-          # attachment.filesize
-          # attachment.storage_path
         end
       end
     end
