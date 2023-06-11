@@ -1,0 +1,13 @@
+# French strings go here for Rails i18n
+fr:
+  label_attachments_limit: Nombre maximal de pièces jointes
+  label_download_title: Télécharger toutes les pièces jointes
+  label_download_menu: Télécharger les pièces jointes
+  label_download_action: Télécharger une archive comprenant toutes les pièces jointes
+  label_project: Projet
+  label_user: Utilisateur
+  label_time_started: Lancement
+  label_time_finisher: Fin
+  label_num_issues: Nombre de demandes
+  label_num_files: Nombre de fichiers
+  label_result: Résultat

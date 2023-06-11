@@ -1,0 +1,13 @@
+# English strings go here for Rails i18n
+en:
+  label_attachments_limit: Maximum number of simultaneous file uploads
+  label_download_title: Download all attachments
+  label_download_menu: Download attachments
+  label_download_action: Download an archive of all issue's attachments
+  label_project: Project
+  label_user: User
+  label_time_started: Time started
+  label_time_finisher: Time finished
+  label_num_issues: Number of issues
+  label_num_files: Number of files
+  label_result: Result

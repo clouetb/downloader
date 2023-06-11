@@ -1,0 +1,33 @@
+<h2><% html_title l(:label_download_title) %></h2>
+<p>
+  <b class="block"><%= link_to l(:label_download_action), {action: 'download', project_id: params[:project_id]}, method: :get %></b>
+</p>
+<div class="autoscroll">
+  <table class="list issues odd-even">
+    <thead>
+    <tr>
+      <th><%= l(:label_project) %></th>
+      <th><%= l(:label_user) %></th>
+      <th><%= l(:label_time_started) %></th>
+      <th><%= l(:label_time_finisher) %></th>
+      <th><%= l(:label_num_issues) %></th>
+      <th><%= l(:label_num_files) %></th>
+      <th><%= l(:label_result) %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @downloads.each do |download| %>
+      <tr>
+        <td><%= download.project %></td>
+        <td><%= download.user %></td>
+        <td><%= download.time_started %></td>
+        <td><%= download.time_finished %></td>
+        <td><%= download.num_issues %></td>
+        <td><%= download.num_files %></td>
+        <td><%= download.result == 0 ? "Success" : "Error" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
