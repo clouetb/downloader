@@ -20,8 +20,8 @@
       <tr>
         <td><%= download.project %></td>
         <td><%= download.user %></td>
-        <td><%= download.time_started %></td>
-        <td><%= download.time_finished %></td>
+        <td><%= download.time_started.localtime %></td>
+        <td><%= download.time_finished.localtime %></td>
         <td><%= download.num_issues %></td>
         <td><%= download.num_files %></td>
         <td><%= download.result == 0 ? "Success" : "Error" %></td>
