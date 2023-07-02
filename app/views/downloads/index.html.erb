@@ -24,7 +24,7 @@
         <td><%= download.time_finished.blank? ? "" : download.time_finished.localtime %></td>
         <td><%= download.num_issues.blank? ? "" : download.num_issues %></td>
         <td><%= download.num_files.blank? ? "" : download.num_files %></td>
-        <td><%= if (download.result.blank? ? 99 : download.num_files) == 0
+        <td><%= if (download.result.blank? ? 99 : download.result) == 0
                   "Success"
                 else
                   "Error"
