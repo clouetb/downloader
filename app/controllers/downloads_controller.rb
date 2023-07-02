@@ -1,5 +1,8 @@
 class DownloadsController < ApplicationController
-
+  include Redmine::Export::PDF::IssuesPdfHelper
+  include Redmine::I18n
+  include ActiveSupport::NumberHelper
+  include ApplicationHelper
   # helper :sort
   # include SortHelper
   # helper :queries
@@ -34,15 +37,20 @@ class DownloadsController < ApplicationController
 
     ZipTricks::Streamer.open(writer, auto_rename_duplicate_filenames: true) do |zip|
       @project.issues.find_each do |issue|
-        number_of_issues = number_of_issues + 1
+        number_of_issues += 1
         issue.attachments.find_each do |attachment|
-          number_of_files = number_of_files + 1
+          number_of_files += 1
           filename_inside_zip = "%06d/%s" % [issue.id, attachment.filename]
           filename_on_server = "%s/%s/%s" % [attachment.storage_path, attachment.disk_directory, attachment.disk_filename]
           zip.write_stored_file(filename_inside_zip) do |sink|
             File.open(filename_on_server, 'rb'){|source| IO.copy_stream(source, sink) }
           end
         end
+        issue_pdf_filename = "%06d/_%s-%06d.pdf" % [issue.id, @project.identifier, issue.id]
+        zip.write_stored_file(issue_pdf_filename) do |sink|
+          IO.copy_stream(StringIO.open(issue_to_pdf(issue, :journals => @journals)), sink)
+        end
+        number_of_files += 1
       end
     end
     download_result = 0
