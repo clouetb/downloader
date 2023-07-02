@@ -37,7 +37,7 @@ class DownloadsController < ApplicationController
         number_of_issues = number_of_issues + 1
         issue.attachments.find_each do |attachment|
           number_of_files = number_of_files + 1
-          filename_inside_zip = "%04d/%s" % [issue.id, attachment.filename]
+          filename_inside_zip = "%06d/%s" % [issue.id, attachment.filename]
           filename_on_server = "%s/%s/%s" % [attachment.storage_path, attachment.disk_directory, attachment.disk_filename]
           zip.write_stored_file(filename_inside_zip) do |sink|
             File.open(filename_on_server, 'rb'){|source| IO.copy_stream(source, sink) }
