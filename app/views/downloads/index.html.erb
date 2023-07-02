@@ -18,13 +18,17 @@
     <tbody>
     <% @downloads.each do |download| %>
       <tr>
-        <td><%= download.project %></td>
-        <td><%= download.user %></td>
-        <td><%= download.time_started.localtime %></td>
-        <td><%= download.time_finished.localtime %></td>
-        <td><%= download.num_issues %></td>
-        <td><%= download.num_files %></td>
-        <td><%= download.result == 0 ? "Success" : "Error" %></td>
+        <td><%= download.project.blank? ? "" : download.project %></td>
+        <td><%= download.user.blank? ? "" : download.user %></td>
+        <td><%= download.time_started.blank? ? "" : download.time_started.localtime %></td>
+        <td><%= download.time_finished.blank? ? "" : download.time_finished.localtime %></td>
+        <td><%= download.num_issues.blank? ? "" : download.num_issues %></td>
+        <td><%= download.num_files.blank? ? "" : download.num_files %></td>
+        <td><%= if (download.result.blank? ? 99 : download.num_files) == 0
+                  "Success"
+                else
+                  "Error"
+                end %></td>
       </tr>
     <% end %>
     </tbody>
