@@ -1,6 +1,7 @@
 class DownloadsController < ApplicationController
   include Redmine::Export::PDF::IssuesPdfHelper
   include Redmine::I18n
+  include ActionView::Helpers::UrlHelper
   include ActiveSupport::NumberHelper
   include ApplicationHelper
   # helper :sort
