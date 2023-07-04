@@ -18,6 +18,7 @@ class DownloadsController < ApplicationController
 
   def download
     @project = Project.find(params[:project_id])
+    include_pdf_summary_of_issues = params[:include_pdf_summary_of_issues]
     current_download = Download.create(time_started: Time.now, user: find_current_user, project: @project)
     number_of_issues = 0
     number_of_files = 0
@@ -47,11 +48,13 @@ class DownloadsController < ApplicationController
             File.open(filename_on_server, 'rb'){|source| IO.copy_stream(source, sink) }
           end
         end
-        issue_pdf_filename = "%06d/_%s-%06d.pdf" % [issue.id, @project.identifier, issue.id]
-        zip.write_stored_file(issue_pdf_filename) do |sink|
-          IO.copy_stream(StringIO.open(issue_to_pdf(issue, :journals => @journals)), sink)
+        if include_pdf_summary_of_issues then
+          issue_pdf_filename = "%06d/_%s-%06d.pdf" % [issue.id, @project.identifier, issue.id]
+          zip.write_stored_file(issue_pdf_filename) do |sink|
+            IO.copy_stream(StringIO.open(issue_to_pdf(issue, :journals => @journals)), sink)
+          end
+          number_of_files += 1
         end
-        number_of_files += 1
       end
     end
     download_result = 0

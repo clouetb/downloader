@@ -4,6 +4,7 @@ en:
   label_download_title: Download all attachments
   label_download_menu: Download attachments
   label_download_action: Download an archive of all issue's attachments
+  label_include_pdf_summary_of_issues: Include a PDF summary of each request (Significantly slower)
   label_project: Project
   label_user: User
   label_time_started: Time started

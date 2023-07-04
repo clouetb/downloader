@@ -3,7 +3,8 @@ fr:
   label_attachments_limit: Nombre maximal de pièces jointes
   label_download_title: Télécharger toutes les pièces jointes
   label_download_menu: Télécharger les pièces jointes
-  label_download_action: Télécharger une archive comprenant toutes les pièces jointes
+  label_download_action: Télécharger une archive de toutes les pièces jointes
+  label_include_pdf_summary_of_issues: Inclure un résumé de chaque demande au format PDF (Allonge significativement l'opération)
   label_project: Projet
   label_user: Utilisateur
   label_time_started: Lancement

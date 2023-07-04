@@ -1,6 +1,11 @@
 <h2><% html_title l(:label_download_title) %></h2>
 <p>
-  <b class="block"><%= link_to l(:label_download_action), {action: 'download', project_id: params[:project_id]}, method: :get %></b>
+  <%= form_tag("/download", method: "get") do %>
+    <%= hidden_field_tag(:project_id, params[:project_id]) %>
+    <%= submit_tag(l(:label_download_action)) %>
+    <%= check_box_tag(:include_pdf_summary_of_issues) %>
+    <%= label_tag(nil, l(:label_include_pdf_summary_of_issues)) %>
+  <% end %>
 </p>
 <div class="autoscroll">
   <table class="list issues odd-even">
@@ -34,4 +39,3 @@
     </tbody>
   </table>
 </div>
-
